@@ -1,25 +1,119 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Boris Rose">
-    <meta name="description" content="Login Page du Shopping List">
-    <title>Login | Page </title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Boris Rose" />
+    <meta name="description" content="Login Page du Shopping List" />
+    <title>Login | Page</title>
     <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
-    <link rel="stylesheet" href="./base.css">
-    <link rel="stylesheet" href="./login.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./base.css" />
+    <link rel="stylesheet" href="./login.css" />
+  </head>
+  <body>
     <header class="login-header">
-        <p>Login Page </p>
+      <p>Login Page</p>
     </header>
     <main class="main login-main">
-
-
+      <form id="login-form">
+        <article>
+          <label for="email"></label>
+          <input id="email" type="email" placeholder="Entrez votre email" />
+        </article>
+        <article>
+          <label for="password"></label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Entrez votre mot de passe"
+          />
+        </article>
+        <section>
+          <button type="submit">Valider</button>
+          <button type="reset">Réinitialiser</button>
+        </section>
+        <section>
+          <p id="error"></p>
+          <p id="success"></p>
+        </section>
+      </form>
     </main>
-</body>
+    <script>
+      const form = document.getElementById("login-form");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const error = document.getElementById("error");
+      const success = document.getElementById("success");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const emailValue = email.value;
+        const passwordValue = password.value;
+
+        if (!emailValue || !passwordValue) {
+          error.innerText = "Complétez le formulaire";
+          // appel d'une fonction  add(arg1, arg2)
+          setTimeout(() => {
+            error.innerText = "";
+          }, 2000);
+          return;
+        }
+
+        //si tout se passe bien
+
+        // on va récupérer le contenu du fichier users.json
+
+        // cette action ne se fait pas de façon instantané
+        //cela prend du temps donc on est obligé de signaler
+        // au programme que c'est une action non synchrone
+        // on utilise donc async et await
+        // avec vous dites ne passe à la ligne suivante tant que
+        // l'exécution de la fonction qui est précédé d'await n'est pas une promesse complète
+        // la ligne 1
+        const result = await fetch("./users.json");
+        // on ne passe pas à la ligne 2 tant que la promosse await n'est pas réalisée
+        // la méthode .json() convertire le json en javascript
+        const users = await result.json();
+
+        // on va chercher dans le tableau si l'email récupéré existe
+
+        const isUserInUsers = (user) => user.email == emailValue;
+
+        const user = users.find(isUserInUsers);
+        if (user) {
+          // si l'utilisateur existe alors on vérifie si le password
+          // correspond à celui qui est dans la base de données
+          if (user.password === passwordValue) {
+            // les passwords correspondent
+            error.innerHTML = "";
+            success.innerHTML = "Connexion réussie";
+
+            localStorage.setItem("user", JSON.stringify(
+                {
+                    "id":user.id, 
+                    "email": user.email
+                }
+            ))
+
+
+         
+            window.location.href="shopping.html"
+
+
+          } else {
+            // les passwords ne correspondent pas
+            success.innerHTML = "";
+            error.innerHTML = "Mot de passe incorrect";
+          }
+        } else {
+            success.innerHTML = "";
+            error.innerHTML = "Utilisateur non trouvé";
+        }
+      });
+    </script>
+  </body>
 </html>

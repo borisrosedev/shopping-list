@@ -12,4 +12,55 @@
     color: white;
     padding: 0 20px;
     z-index: 10;
+
+
+}
+
+
+.login-main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#login-form {
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 5px gray;
+
+    
+}
+
+
+#login-form article {
+    width: 100%;
+    margin-block: 10px;
+    display: flex;
+   
+}
+
+
+#login-form input {
+    width: 100%;
+    padding: 10px;
+}
+
+#login-form section:first-of-type {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+
+  
+}
+
+#login-form button {
+
+    padding: 8px 30px;
+
+
+
+
 }

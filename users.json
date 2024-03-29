@@ -1,0 +1,40 @@
+[
+    {
+        "id":"boris12302323230323",
+        "email": "boris@gmail.com",
+        "password":"caroline",
+
+        "list": [
+            {
+               "name":"Acheter du pain",
+               "isDone":true 
+            },
+            {
+                "name":"Faire les courses samedi",
+                "isDone": false
+            },
+            {
+                "name":"Faire une pizza dimanche",
+                "isDone":false
+            }
+        ]
+    },
+    {
+        "email":"caroline@gmail.com",
+        "password":"alexandre",
+        "list": [
+            {
+               "name":"Aller chez le coiffeur",
+               "isDone":false 
+            },
+            {
+                "name":"Faire un gâteau pour Boris",
+                "isDone": true
+            },
+            {
+                "name":"Aller au sport",
+                "isDone": false
+            }
+        ]
+    }
+]

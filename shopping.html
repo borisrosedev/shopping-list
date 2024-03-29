@@ -24,6 +24,20 @@
     <script>
 
 
+      const findUserInLocalStorage = async() => {
+        const localStorageUser = JSON.parse(localStorage.getItem("user"))
+        if(localStorageUser !== null){
+          const users = await (await fetch('./users.json')).json()
+          const user = users.find((user) => user.id == localStorageUser.id)
+          if(user){
+              for(const userItemList of user.list){
+                  createShoppingListItemLi(userItemList.name)
+              }
+          }
+        }
+      }
+     
+      findUserInLocalStorage()
    
 
       // tu stockes l'élément HTML qui représente le bouton add-button dans une variable appelée addButton
