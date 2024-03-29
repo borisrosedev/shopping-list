@@ -1,0 +1,128 @@
+:root {
+    --primary-color: rgb(255, 160, 59);
+}
+
+.shopping-header {
+  height: 8vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-shadow: 1px 1px 5px gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0 20px;
+  z-index: 10;
+}
+
+#add-button {
+  border-radius: 50%;
+  padding: 2px;
+  transition: all ease-in-out 500ms;
+  cursor: pointer;
+}
+
+#add-button:hover,
+#save-button:hover {
+  background-color: var(--primary-color);
+}
+
+#add-button:active,
+#save-button:active {
+  background-color: var(--primary-color);
+}
+
+#shopping-list {
+  display: flex;
+  flex-direction: column;
+}
+
+#new-item-input-container {
+  display: flex;
+  flex-direction: column;
+
+ 
+}
+
+#save-button {
+  padding: 20px;
+  align-self: center;
+  border: none;
+  transition: all ease-in-out 500ms;
+  cursor: pointer;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+}
+
+ul {
+  margin: 40px 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  transition: all ease-in-out 500ms;
+  li {
+    margin-block: 10px;
+    align-self: flex-start;
+    font-style: italic;
+    width: 100%;
+    background-color: var(--primary-color);
+  }
+}
+
+.li-item-container {
+  p {
+    margin: 0;
+  }
+
+  button {
+    margin: 0;
+    align-self: center;
+    background-color: transparent;
+    border: none;
+    span {
+      align-self: center;
+    }
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  
+
+  button {
+    opacity: 0;
+    transition: all ease-in-out 500ms;
+  }
+
+  button:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.shopping-list-item-input-article {
+  margin: 20px 0;
+  display: flex;
+  input {
+    padding: 20px;
+    margin-block: 10px;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color);
+  }
+}
+
+.main {
+  height: 100vh;
+  padding-top: 8vh;
+  padding-inline: 20px;
+}
+
