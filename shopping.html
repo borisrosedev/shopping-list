@@ -1,149 +1,198 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="./shopping.css">
-</head>
-<body>
-
-    <header class="shopping-header"> 
-        <p> Liste de Courses </p>   
-        <span 
-            id="add-button"
-            class="material-symbols-outlined"
-        >
-            add
-        </span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping List | Page </title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./shopping.css" />
+  </head>
+  <body>
+    <header class="shopping-header">
+      <p>Liste de Courses</p>
+      <span id="add-button" class="material-symbols-outlined"> add </span>
     </header>
     <main class="main shopping-main">
-        <ul id="shopping-list"></ul>
-        <p id="no-item"></p>
-        <section id="new-item-input-container">
-        </section>
-    </main>    
+      <ul id="shopping-list"></ul>
+      <p id="no-item"></p>
+      <section id="new-item-input-container"></section>
+    </main>
     <script>
-        // tu stockes l'élément HTML qui représente le bouton add-button dans une variable appelée addButton
-        const addButton = document.getElementById('add-button');
-        const shoppingList = document.getElementById('shopping-list');
-        const newItemInputContainer = document.getElementById('new-item-input-container');
-
-        const noItem = document.getElementById('no-item');
-
-        function createNoItemMessage(){
-            const children = Array.from(shoppingList.children).length == 0 ? noItem.innerText = "Aucun élément pour le moment" : noItem.innerText = "";
-            console.log(children)
-        }
-
-        createNoItemMessage()
-
-        // tout élément d'une page HTML est un objet autrement tu peux utiliser sur cette objet la notation par point
-        // que l'on appelle la dot notation
-        // je vais créer une fonction qui me crée une zone de texte dans l'ul
 
 
-        function createShoppingListItemLi(val){
-            console.log('🟠')
-            const li = document.createElement('li')
-            const time = new Date().getTime()
-            const stringTime = time.toString()
-            li.id = stringTime
-            li.innerHTML = `
+   
+
+      // tu stockes l'élément HTML qui représente le bouton add-button dans une variable appelée addButton
+      const addButton = document.getElementById("add-button");
+      const shoppingList = document.getElementById("shopping-list");
+      const newItemInputContainer = document.getElementById(
+        "new-item-input-container"
+      );
+
+      const noItem = document.getElementById("no-item");
+
+      function createNoItemMessage() {
+        const children =
+          Array.from(shoppingList.children).length == 0
+            ? (noItem.innerText = "Aucun élément pour le moment")
+            : (noItem.innerText = "");
+        console.log(children);
+      }
+
+      createNoItemMessage();
+
+      // tout élément d'une page HTML est un objet autrement tu peux utiliser sur cette objet la notation par point
+      // que l'on appelle la dot notation
+      // je vais créer une fonction qui me crée une zone de texte dans l'ul
+
+      function createShoppingListItemLi(val) {
+        console.log("🟠");
+        const li = document.createElement("li");
+        const time = new Date().getTime();
+        const stringTime = time.toString();
+        li.id = stringTime;
+        li.innerHTML = `
             <div class="li-item-container"> 
-                <p>${val}</p> 
-                <button id="deleta-button-${li.id}"> 
+                <p id="task-${li.id}">${val}</p> 
+                <button id="checkbox-button-${li.id}" class="checkbox-button">
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                </button>
+                <button id="delete-button-${li.id}" class="delete-button"> 
                     <span class="material-symbols-outlined">
                         delete
                     </span>
                 </button>
             </div>
-            `
-            shoppingList.appendChild(li)
-            createNoItemMessage()
-            setTimeout(() => {
-                const deleteButton = document.getElementById(`deleta-button-${li.id}`)
-                deleteButton.addEventListener('click', () => {
-                    const children = Array.from(shoppingList.children)
-                    const child = children.find((child) => child.id == li.id)
-                    shoppingList.removeChild(child);
-                    createNoItemMessage()
-                
-                    
-                    
-                })
-            }, 0)
-        
-
-         
-        }
-
-        // une fonction qui récupère la valeur entrée par l'utilisateur  et elle passe cette valeur à la fonction qui va créer l'élément dans la liste 
-        function takeTheInputValue(){
-            console.log('🔵')
-            const inputValue = document.getElementById('new-shopping-item-input').value
-            createShoppingListItemLi(inputValue)
+            `;
+        shoppingList.appendChild(li);
+        createNoItemMessage();
+        // la fonction setTimeout est une fonction asynchrone qui 
+        // attend qu'un certain délai se soit écoulé avant d'exécuter la callback qu'elle contient en argument 
+        setTimeout(() => {
           
-        }
+          const deleteButton = document.getElementById(
+            `delete-button-${li.id}`
+          );
+          deleteButton.addEventListener("click", () => {
+            const children = Array.from(shoppingList.children);
+            const child = children.find((child) => child.id == li.id);
+            shoppingList.removeChild(child);
+            createNoItemMessage();
+          });
 
-        function clickHandler(){
-            takeTheInputValue()
-        }
+          const checkboxButton = document.getElementById(`checkbox-button-${li.id}`)
+
+          // GESTION DU CLIC SUR LA CHECKBOX
+          checkboxButton.addEventListener('click', function(){
+
+            //
+            const task = document.getElementById(`task-${li.id}`)
+
+            if(checkboxButton.dataset.isClicked=="true"){
+                //si on a déjà cliqué sur le bouton
+                checkboxButton.dataset.isClicked="false"
+                checkboxButton.innerHTML = `
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                `
+                task.style.textDecoration = 'unset'
+            } else {
+                // si je n'ai pas encore cliqué sur le bouton
+                const selectedCheckboxSpan = `
+                <span class="material-symbols-outlined">
+                    select_check_box
+                </span>`
+                task.style.textDecoration = 'line-through'
+                checkboxButton.dataset.isClicked="true"
+                checkboxButton.innerHTML=selectedCheckboxSpan
 
 
-        function verifyIfInputDivExists(){
-            // je vérifie que l'élément html qui représent l'input de création d'un nouvel élément existe sur la page HTML
-            const isPresentInPage = document.getElementById('new-shopping-item-input');
 
-            const result = (isPresentInPage == null ? false : true);
-
-            return result
-            
-        }
-
-        function createInputDiv(){
-            // on vérifie en premier lieu si le formulaire d'ajout d'un nouvel est déjà présent sur la page
-            if(verifyIfInputDivExists()){
-                return
             }
 
-            // on crée un input
-            // on créer un article qui va contenir l'input + le bouton sauvegarder
-            const article = document.createElement('article')
-            article.classList.add('shopping-list-item-input-article')
-            // on crée un input et un bouton
-            const input = document.createElement('input');
-            const button = document.createElement('button')
-            button.textContent = "Sauvegarder"
-            button.id = "save-button"
 
-            button.addEventListener('click', clickHandler)
-            // on ajoute à l'article l'input puis le bouton
-            article.appendChild(input)
-            article.appendChild(button)
-            // on définit les attributs et leurs valeurs pour l'input
-            input.setAttribute('placeholder', 'Nouvelle élément ...');
-            //input.placeholder = 'Nouvelle élément'
-            input.setAttribute('type', 'text')
-            //input.type = "text"
-            input.id = "new-shopping-item-input"
-            //ajoute élément dans l'arbre html existant
+          
+          })
+          
 
-            // ajoute à la sectin existante l'article
-            newItemInputContainer.appendChild(article);
+         
+
+        }, 0);
+      }
+
+      // une fonction qui récupère la valeur entrée par l'utilisateur  et elle passe cette valeur à la fonction qui va créer l'élément dans la liste
+      function takeTheInputValue() {
+
+        console.log("🔵");
+        const inputValue = document.getElementById(
+          "new-shopping-item-input"
+        ).value;
+        if(inputValue == ""){
+            return
+        }
+        createShoppingListItemLi(inputValue);
+      }
+
+      function clickHandler() {
+        takeTheInputValue();
+      }
+
+      function verifyIfInputDivExists() {
+        // je vérifie que l'élément html qui représent l'input de création d'un nouvel élément existe sur la page HTML
+        const isPresentInPage = document.getElementById(
+          "new-shopping-item-input"
+        );
+
+        const result = (isPresentInPage == null ? false : true);
+
+        return result;
+      }
+
+      function createInputDiv() {
+        // on vérifie en premier lieu si le formulaire d'ajout d'un nouvel est déjà présent sur la page
+        if (verifyIfInputDivExists()) {
+          return;
         }
 
+        // on crée un input
+        // on créer un article qui va contenir l'input + le bouton sauvegarder
+        const article = document.createElement("article");
+        article.classList.add("shopping-list-item-input-article");
+        // on crée un input et un bouton
+        const input = document.createElement("input");
+        const button = document.createElement("button");
+        button.textContent = "Sauvegarder";
+        button.id = "save-button";
 
-        // je vais définir la fonction qui sera exécutée au moment du clic sur le boutton add-button
-        function listener(){
-            createInputDiv()
-        }
+        button.addEventListener("click", clickHandler);
+        // on ajoute à l'article l'input puis le bouton
+        article.appendChild(input);
+        article.appendChild(button);
+        // on définit les attributs et leurs valeurs pour l'input
+        input.setAttribute("placeholder", "Nouvelle élément ...");
+        //input.placeholder = 'Nouvelle élément'
+        input.setAttribute("type", "text");
+        //input.type = "text"
+        input.id = "new-shopping-item-input";
+        //ajoute élément dans l'arbre html existant
 
-        addButton.addEventListener('click', listener)
+        // ajoute à la sectin existante l'article
+        newItemInputContainer.appendChild(article);
+      }
 
+      // je vais définir la fonction qui sera exécutée au moment du clic sur le boutton add-button
+      function listener() {
+        createInputDiv();
+      }
 
-
+      addButton.addEventListener("click", listener);
     </script>
-</body>
+  </body>
 </html>

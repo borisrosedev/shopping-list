@@ -1,0 +1,15 @@
+.login-header {
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 1px 1px 5px gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0 20px;
+    z-index: 10;
+}

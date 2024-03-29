@@ -1,0 +1,32 @@
+:root {
+    --primary-color: rgb(255, 160, 59);
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+}
+
+ul {
+  margin: 40px 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  transition: all ease-in-out 500ms;
+  li {
+    margin-block: 10px;
+    align-self: flex-start;
+    font-style: italic;
+    width: 100%;
+    background-color: var(--primary-color);
+    
+  }
+}
+
+.main {
+    height: 100vh;
+    padding-top: 8vh;
+    padding-inline: 20px;
+}
+  
