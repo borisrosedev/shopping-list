@@ -32,8 +32,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
 
       - name: Update wiki content
-        env:
-          GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
         if: always() # Toujours mettre à jour le wiki, quels que soient les résultats des tests
         run: |
           echo "# Test Results" > wiki/index.md
@@ -47,6 +45,8 @@ jobs:
           git add wiki/index.md
           git commit -m "Update wiki with test results"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
 
       - name: Stop workflow if tests fail
         if: failure() # Si les tests échouent, arrêter le workflow
