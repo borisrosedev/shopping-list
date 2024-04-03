@@ -28,14 +28,6 @@ jobs:
         with:
           target_branch: main
           build_dir: wiki
-          domain: shopping-list
-          keep_history: false
-          allow_empty_commit: true
-          absolute_build_dir: false
-          follow_symlinks: false
-          jekyll: true
-          dry_run: false
-          verbose: false
         env:
           GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
 
