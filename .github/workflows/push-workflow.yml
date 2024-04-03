@@ -32,6 +32,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
 
       - name: Update wiki content
+        env:
+          GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
         if: always() # Toujours mettre à jour le wiki, quels que soient les résultats des tests
         run: |
           echo "# Test Results" > wiki/index.md
