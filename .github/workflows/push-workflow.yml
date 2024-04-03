@@ -28,6 +28,15 @@ jobs:
           target_branch: gh-pages
           build_dir: wiki
           domain: ${{ github.repository }}
+          keep_history: false
+          allow_empty_commit: true
+          absolute_build_dir: false
+          follow_symlinks: false
+          jekyll: true
+          dry_run: false
+          verbose: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.BORIS_GA_TOKEN }}
 
       - name: Update wiki content
         if: always() # Toujours mettre à jour le wiki, quels que soient les résultats des tests
