@@ -26,7 +26,7 @@ jobs:
         if: ${{ success() }}
         uses: crazy-max/ghaction-github-pages@v3
         with:
-          target_branch: main
+          target_branch: gh-pages
           build_dir: wiki
         env:
           GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
