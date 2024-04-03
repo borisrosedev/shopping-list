@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+
+permissions:
+  contents: write
+
 jobs:
   test-my-app:
     runs-on: ubuntu-latest
@@ -29,7 +33,7 @@ jobs:
           target_branch: gh-pages
           build_dir: wiki
         env:
-          GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
+          GH_PAT: ${{ secrets.BORIS_TOKEN }}
 
       - name: Update wiki content
         if: always() # Toujours mettre à jour le wiki, quels que soient les résultats des tests
@@ -46,10 +50,10 @@ jobs:
           git commit -m "Update wiki with test results"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
+          GH_PAT: ${{ secrets.BORIS_TOKEN }}
 
       - name: Stop workflow if tests fail
         env:
-          GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
+          GH_PAT: ${{ secrets.BORIS_TOKEN }}
         if: failure() # Si les tests échouent, arrêter le workflow
         run: exit 1
