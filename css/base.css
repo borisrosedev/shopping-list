@@ -1,5 +1,11 @@
 :root {
     --primary-color: rgb(102, 31, 0);
+    --desktop-main-height:500px;
+    --desktop-main-width:700px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -9,6 +15,32 @@ body {
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+}
+
+html {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.video, .img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 ul,
@@ -37,14 +69,55 @@ ul {
 
 .header {
   width: 700px;
+  height: 8vh;
+  box-shadow: 1px 1px 5px gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0 20px;
+  z-index: 10;
+
+  p {
+    opacity: 0;
+    animation: showRight 500ms ease-in-out 500ms forwards;
+  }
 }
 
 .main {
     
-    padding-top: 8vh;
-    padding-inline: 20px;
-    width: 700px;
-    box-shadow: 1px 1px 5px gray;
+  padding-top: 8vh;
+  padding-inline: 20px;
+  height:var(--desktop-main-height);
+  width: var(--desktop-main-width);
+  display: flex;
+  box-shadow: 1px 1px 5px gray;
+  position: relative;
+  opacity: 0;
+  animation: show 500ms ease-in-out forwards;
+  display: flex;
    
 }
   
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes showRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}

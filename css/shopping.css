@@ -1,14 +1,10 @@
-.shopping-header {
-  height: 8vh;
-
-  box-shadow: 1px 1px 5px gray;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 0 20px;
-  z-index: 10;
+.shopping-main {
+  background-image: url("../public/bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: scroll;
+  
 }
 
 #add-button {
@@ -97,13 +93,4 @@
 
 }
 
-.shopping-main {
-  background-image: url("../public/bg.jpg");
-  background-position: center;
-  background-size: cover;
 
-  background-repeat: no-repeat;
-  height: 500px;
-  overflow-y: scroll;
-  
-}

@@ -1,0 +1,39 @@
+
+
+
+.landing-main {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    a {
+        border: solid white 2px;
+        padding: 10px 30px;
+        position: absolute;
+        z-index: 5;
+        color: #fff;
+        transition: all ease-in-out 500ms;
+    }
+    a:hover {
+        border-color: rgb(159, 255, 250);
+        color:  rgb(159, 255, 250);
+    }
+
+
+    
+}
+
+.landing-message-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+
+

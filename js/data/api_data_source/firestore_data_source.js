@@ -8,7 +8,7 @@ export class MyFireStoreDataSource {
   static async sendData(endpoint, data) {
     const result = await fetch(
       `http://localhost:3000/${endpoint}`, {
-        method:'POST',
+        method:"POST",
         headers: {
           "Content-Type":"application/json"
         },
