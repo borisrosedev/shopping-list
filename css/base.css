@@ -60,7 +60,6 @@ ul {
     margin-block: 10px;
     align-self: flex-start;
     font-style: italic;
-    width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     
@@ -84,6 +83,8 @@ ul {
     animation: showRight 500ms ease-in-out 500ms forwards;
   }
 }
+
+
 
 .main {
     
@@ -120,4 +121,42 @@ ul {
   to {
     opacity: 1;
   }
+}
+
+@media (0<= width <= 714px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    width: 100vw;
+    box-shadow: 1px 1px 5px gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0 20px;
+
+
+    p {
+      opacity: 0;
+      animation: showRight 500ms ease-in-out 500ms forwards;
+    }
+  }
+  
+  .main {
+    height: 100vh;
+    padding-top: 8vh;
+    width: 100vw;
+    display: flex;
+    box-shadow: 1px 1px 5px gray;
+    position: relative;
+    opacity: 0;
+    animation: show 500ms ease-in-out forwards;
+    display: flex;
+     
+  }
+    
 }

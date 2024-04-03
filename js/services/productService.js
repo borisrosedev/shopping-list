@@ -1,6 +1,5 @@
 import { MyFireStoreDataSource } from "../data/api_data_source/firestore_data_source.js";
 
-
 // c'est du programmation procédurale
 async function getToDosFromFirestore() {
   // logique métier "todos"

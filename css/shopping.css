@@ -8,6 +8,18 @@
   
 }
 
+
+#reset-button {
+  border: none;
+  padding: 8px 30px;
+  &:hover {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+  }
+  margin-bottom: 40px;
+}
+
 #add-button {
   border-radius: 50%;
   padding: 2px;
@@ -34,6 +46,7 @@
 #new-item-input-container {
   display: flex;
   flex-direction: column;
+
 }
 
 #save-button {
@@ -46,14 +59,13 @@
 
 .li-item-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding:10px 0;
+
+  padding:10px 20px;
+
   
 
   p {
     margin: 0;
-    width: 50%;
     text-align: center;
   }
 
@@ -66,7 +78,7 @@
     span {
       align-self: center;
     }
-    width: 25%;
+
   }
 
   .delete-button {

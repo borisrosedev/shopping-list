@@ -32,6 +32,9 @@ function createInputDiv() {
 
   // ajoute à la sectin existante l'article
   NEW_ITEM_INPUT_CONTAINER.appendChild(article);
+  document.getElementById("new-shopping-item-input").scrollIntoView({
+    behavior: "smooth" // Pour une transition fluide, si vous le souhaitez
+  });
 }
 
 export { createInputDiv };

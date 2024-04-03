@@ -1,10 +1,9 @@
 import { NO_ITEM, SHOPPING_LIST } from "../constants/dom.js";
 
 function createNoItemMessage() {
-
-  // Explications 
+  // Explications
   // Nous allons stocker dans la variable children, locale à la fonction createNoItemMessage,
-  // le résult de la structure ternaire suivante 
+  // le résult de la structure ternaire suivante
   /*
     Ceci est une structure terniare:
 
@@ -17,17 +16,11 @@ function createNoItemMessage() {
       : (NO_ITEM.innerText = "");
   */
 
-  let children; 
-  if((Array.from(SHOPPING_LIST.children).length == 0) == true) {
-    children = (NO_ITEM.innerText = "Aucun élément pour le moment")
+  if ((Array.from(SHOPPING_LIST.children).length == 0) == true) {
+    NO_ITEM.innerText = "Aucun élément pour le moment";
   } else {
-    children = (NO_ITEM.innerText = "")
+    NO_ITEM.innerText = "";
   }
-
-  console.log(children);
 }
 
-
-export {
-  createNoItemMessage
-}
+export { createNoItemMessage };

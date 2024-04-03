@@ -1,4 +1,7 @@
+
 import { getToDosFromFirestore } from "../services/productService.js";
+
+import { createResetButton } from "./createResetButton.js";
 import { createShoppingListItemLi } from "./createShoppingListItemLi.js";
 
 async function createInitiUI(){
@@ -6,6 +9,7 @@ async function createInitiUI(){
     toDos.forEach((toDo) => {
         createShoppingListItemLi(toDo, "firestore");
     });
+    createResetButton()
 }
 
 export {
