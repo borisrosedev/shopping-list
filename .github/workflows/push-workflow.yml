@@ -1,49 +1,49 @@
 name: push-workflow
-run-name: ${{github.actor}} is pushing a commit 
-on:  
-    push:
-        branches:
-        - main
+run-name: ${{github.actor}} is pushing a commit
+on:
+  push:
+    branches:
+      - main
 jobs:
-    test-my-app:
-        runs-on: ubuntu-latest
-        steps:
-            - name: 🟠 Action 1 checkout@v4
-              uses: actions/checkout@v4
-            - name: 🔵 Action 2 setup-node@v4
-              uses: actions/setup-node@v4
-              with: 
-                node-version: '14'
-            - name: Run Test
-              run: |
-                npm run test
-                echo "Running Tests"
-            - name: Create Wiki Page
-              if: ${{ success() }}
-              uses: crazy-max/ghaction-github-pages@v3
-              with:
-                target_branch: gh-pages
-                build_dir: wiki
-                domain: ${{ github.repository }}
-        
-            - name: Update wiki content
-              if: always()  # Toujours mettre à jour le wiki, quels que soient les résultats des tests
-              run: |
-                echo "# Test Results" > wiki/index.md
-                if [ $? -eq 0 ]; then
-                echo "Tests passed successfully." >> wiki/index.md
-                else
-                echo "Tests failed." >> wiki/index.md
-                fi
-                git config --global user.name "${{ github.actor }}"
-                git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-                git add wiki/index.md
-                git commit -m "Update wiki with test results"
-                git push
-
-            - name: Stop workflow if tests fail
-              if: failure()  # Si les tests échouent, arrêter le workflow
-              run: exit 1  
-
-   
+  test-my-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🟠 Action 1 checkout@v4
+        uses: actions/checkout@v4
+      - name: 🔵 Action 2 setup-node@v4
+        uses: actions/setup-node@v4
+        with:
+          node-version: "14"
     
+   
+      - name: Run Test
+        run: |
+          npm install
+          npm run test
+          echo "Running Tests"
+      - name: Create Wiki Page
+        if: ${{ success() }}
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: gh-pages
+          build_dir: wiki
+          domain: ${{ github.repository }}
+
+      - name: Update wiki content
+        if: always() # Toujours mettre à jour le wiki, quels que soient les résultats des tests
+        run: |
+          echo "# Test Results" > wiki/index.md
+          if [ $? -eq 0 ]; then
+          echo "Tests passed successfully." >> wiki/index.md
+          else
+          echo "Tests failed." >> wiki/index.md
+          fi
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add wiki/index.md
+          git commit -m "Update wiki with test results"
+          git push
+
+      - name: Stop workflow if tests fail
+        if: failure() # Si les tests échouent, arrêter le workflow
+        run: exit 1
