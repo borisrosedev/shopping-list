@@ -25,7 +25,7 @@ jobs:
         if: ${{ success() }}
         uses: crazy-max/ghaction-github-pages@v3
         with:
-          target_branch: gh-pages
+          target_branch: main
           build_dir: wiki
           domain: ${{ github.repository }}
           keep_history: false
