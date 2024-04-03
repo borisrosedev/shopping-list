@@ -27,7 +27,7 @@ jobs:
         with:
           target_branch: main
           build_dir: wiki
-          domain: https://github.com/borisrosedev/shopping-list
+          domain: github.com/borisrosedev/shopping-list.git
           keep_history: false
           allow_empty_commit: true
           absolute_build_dir: false
