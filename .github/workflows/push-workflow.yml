@@ -28,7 +28,7 @@ jobs:
         with:
           target_branch: main
           build_dir: wiki
-          domain: shopping-list
+          domain: ${{github.repository}}
           keep_history: false
           allow_empty_commit: true
           absolute_build_dir: false
