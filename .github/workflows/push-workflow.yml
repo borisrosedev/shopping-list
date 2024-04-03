@@ -49,5 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
 
       - name: Stop workflow if tests fail
+        env:
+          GITHUB_TOKEN: ${{ secrets.BORIS_TOKEN }}
         if: failure() # Si les tests échouent, arrêter le workflow
         run: exit 1
