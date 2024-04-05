@@ -1,5 +1,5 @@
 import { NEW_ITEM_INPUT_CONTAINER, SHOPPING_LIST } from "../constants/dom.js";
-import { createToDoInFirestore } from "../services/productService.js";
+import { ToDoService } from "../services/ToDoService.js";
 import { createNoItemMessage } from "./createNoItemMessage.js";
 import { createResetButton } from "./createResetButton.js";
 
@@ -13,7 +13,7 @@ async function createShoppingListItemLi(el, from) {
 
   // control flow 
   if (from !== "firestore") {
-    const item = await createToDoInFirestore(el);
+    const item = await ToDoService.createToDoInFirestore(el);
     li.id = item.id;
     paragraph.innerText = item.name;
     NEW_ITEM_INPUT_CONTAINER.removeChild(NEW_ITEM_INPUT_CONTAINER.lastChild)
