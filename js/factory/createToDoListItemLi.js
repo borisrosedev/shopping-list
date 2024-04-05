@@ -1,11 +1,11 @@
-import { NEW_ITEM_INPUT_CONTAINER, SHOPPING_LIST } from "../constants/dom.js";
+import { NEW_ITEM_INPUT_CONTAINER, TODOS_LIST } from "../constants/dom.js";
 import { ToDoService } from "../services/ToDoService.js";
 import { createNoItemMessage } from "./createNoItemMessage.js";
 import { createResetButton } from "./createResetButton.js";
 
 // el et from sont des paramètres
 // ils font partie de la signature de la fonction
-async function createShoppingListItemLi(el, from) {
+async function createToDoListItemLi(el, from) {
 
   // on crée un élément html de type li et on le stocke dans la variable locale à la fonction createShoppinbgListItemLi, li
   const li = document.createElement("li");
@@ -13,7 +13,8 @@ async function createShoppingListItemLi(el, from) {
 
   // control flow 
   if (from !== "firestore") {
-    const item = await ToDoService.createToDoInFirestore(el);
+    const { id } = JSON.parse(localStorage.getItem("user"))
+    const item = await ToDoService.createToDoInFirestore(el,id.toString());
     li.id = item.id;
     paragraph.innerText = item.name;
     NEW_ITEM_INPUT_CONTAINER.removeChild(NEW_ITEM_INPUT_CONTAINER.lastChild)
@@ -24,7 +25,7 @@ async function createShoppingListItemLi(el, from) {
 
   li.classList.add("li-item-container")
   li.appendChild(paragraph);
-  SHOPPING_LIST.appendChild(li);
+  TODOS_LIST.appendChild(li);
 
 
   createNoItemMessage();
@@ -34,4 +35,4 @@ async function createShoppingListItemLi(el, from) {
 
 }
 
-export { createShoppingListItemLi };
+export { createToDoListItemLi };

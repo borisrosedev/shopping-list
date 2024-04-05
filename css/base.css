@@ -82,6 +82,10 @@ ul {
     opacity: 0;
     animation: showRight 500ms ease-in-out 500ms forwards;
   }
+
+  span {
+    margin: 0 10px;
+  }
 }
 
 

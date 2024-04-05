@@ -16,9 +16,10 @@ export class ToDoService {
     });
   }
 
-  static async createToDoInFirestore(val) {
+  static async createToDoInFirestore(val, userUid) {
     const req = {
       name: val,
+      userUid:userUid
     };
     return MyFireStoreDataSource.sendData("todos/add", req).then((res) => {
       let data = {

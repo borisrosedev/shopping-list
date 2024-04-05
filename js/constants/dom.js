@@ -1,6 +1,7 @@
 // ---- TODOS PAGE
 const ADD_BUTTON = document.getElementById("add-button");
-const SHOPPING_LIST = document.getElementById("shopping-list");
+const LOGOUT_BUTTON = document.getElementById("logout-button");
+const TODOS_LIST = document.getElementById("todos-list");
 const NEW_ITEM_INPUT_CONTAINER = document.getElementById(
   "new-item-input-container"
 );
@@ -12,14 +13,16 @@ const EMAIL_INPUT = document.getElementById("email");
 const PASSWORD_INPUT = document.getElementById("password");
 const ERROR_PARAGRAPH = document.getElementById("error");
 const SUCCESS_PARAGRAPH = document.getElementById("success");
-
+// --------------REGISTER PAGE
+const REGISTER_FORM = document.getElementById("register-form");
+const CONFIRMED_PASSWORD_INPUT = document.getElementById("confirmed-password")
 
 
 
 // je veux pouvoir utiliser ces variables ailleurs
 export { 
   ADD_BUTTON, 
-  SHOPPING_LIST, 
+  TODOS_LIST, 
   NEW_ITEM_INPUT_CONTAINER, 
   NO_ITEM,
   RESET_BUTTON_CONTAINER,
@@ -27,5 +30,8 @@ export {
   EMAIL_INPUT,
   PASSWORD_INPUT,
   ERROR_PARAGRAPH,
-  SUCCESS_PARAGRAPH
+  SUCCESS_PARAGRAPH,
+  REGISTER_FORM,
+  CONFIRMED_PASSWORD_INPUT,
+  LOGOUT_BUTTON
 }

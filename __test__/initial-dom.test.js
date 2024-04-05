@@ -34,12 +34,12 @@ describe("Initial Dom Test Suite", function(){
     test("should contain ", () => {
 
         document.body.innerHTML = `
-            <header class="header shopping-header">
+            <header class="header todos-header">
                 <p>Liste de Courses</p>
                 <span id="add-button" class="material-symbols-outlined">add</span>
             </header>
-            <main class="main shopping-main">
-                <ul id="shopping-list"></ul>
+            <main class="main todos-main">
+                <ul id="todos-list"></ul>
                 <p id="no-item"></p>
                 <section id="new-item-input-container"></section>
                 <section id="reset-button-container"></section>

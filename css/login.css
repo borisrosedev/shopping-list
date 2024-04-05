@@ -1,6 +1,7 @@
 .login-main {
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 #login-form {
   padding: 20px;
@@ -9,6 +10,7 @@
   box-shadow: 1px 1px 5px gray;
   background-color: rgba(0, 0, 0, 0.7);
 }
+
 
 #login-form article {
   width: 100%;
@@ -30,3 +32,5 @@
 #login-form button {
   padding: 8px 30px;
 }
+
+

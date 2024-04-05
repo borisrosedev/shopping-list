@@ -1,4 +1,4 @@
-.shopping-main {
+.todos-main {
   background-image: url("../public/bg1.jpg");
   background-position: center;
   background-size: cover;
@@ -20,6 +20,7 @@
   margin-bottom: 40px;
 }
 
+#logout-button,
 #add-button {
   border-radius: 50%;
   padding: 2px;
@@ -27,17 +28,19 @@
   cursor: pointer;
 }
 
+#logout-button:hover,
 #add-button:hover,
 #save-button:hover {
   background-color: var(--primary-color);
 }
 
+#logout-button:active,
 #add-button:active,
 #save-button:active {
   background-color: var(--primary-color);
 }
 
-#shopping-list {
+#todos-list {
   display: flex;
   flex-direction: column;
 
@@ -92,7 +95,7 @@
   }
 }
 
-.shopping-list-item-input-article {
+.todos-list-item-input-article {
   margin: 20px 0;
   display: flex;
   input {

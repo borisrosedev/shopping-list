@@ -4,6 +4,7 @@ import {
   PASSWORD_INPUT,
   SUCCESS_PARAGRAPH,
 } from "../constants/dom.js";
+import { UserService } from "../services/UserService.js";
 
 export default async function (event) {
   event.preventDefault();
@@ -22,20 +23,17 @@ export default async function (event) {
     return;
   }
 
+  const { fullUser } = await UserService.login({
+    email: emailValue,
+    password: passwordValue,
+  });
+  const user = fullUser;
 
-  const result = await fetch("https://todos-backend-ikdb.onrender.com/user/login", {
-    method: "POST",
-    headers: {
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({email: emailValue, password: passwordValue})
-  })
 
-  const { fullUser } = await result.json()
-  const user = fullUser
+  
 
   if (user) {
-    console.log(user)
+    console.log(user);
     // si l'utilisateur existe alors on vérifie si le password
     // correspond à celui qui est dans la base de données
     if (user.uid) {
@@ -46,15 +44,13 @@ export default async function (event) {
       localStorage.setItem(
         "user",
         JSON.stringify({
-          id: (user.uid).toString(),
+          id: user.uid.toString(),
           email: user.email,
         })
       );
 
-
-      window.location.href = "shopping.html?token="+(user.uid).toString();
-      console.log(window.location)
-  
+      window.location.href = "todos.html?token=" + user.uid.toString();
+      console.log(window.location);
     } else {
       // les passwords ne correspondent pas
       SUCCESS_PARAGRAPH.innerHTML = "";

@@ -11,7 +11,7 @@ function createInputDiv() {
   // on crée un input
   // on créer un article qui va contenir l'input + le bouton sauvegarder
   const article = document.createElement("article");
-  article.classList.add("shopping-list-item-input-article");
+  article.classList.add("todos-list-item-input-article");
   // on crée un input et un bouton
   const input = document.createElement("input");
   const button = document.createElement("button");
@@ -27,12 +27,12 @@ function createInputDiv() {
   //input.placeholder = 'Nouvelle élément'
   input.setAttribute("type", "text");
   //input.type = "text"
-  input.id = "new-shopping-item-input";
+  input.id = "new-todos-item-input";
   //ajoute élément dans l'arbre html existant
 
   // ajoute à la sectin existante l'article
   NEW_ITEM_INPUT_CONTAINER.appendChild(article);
-  document.getElementById("new-shopping-item-input").scrollIntoView({
+  document.getElementById("new-todos-item-input").scrollIntoView({
     behavior: "smooth" // Pour une transition fluide, si vous le souhaitez
   });
 }

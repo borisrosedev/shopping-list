@@ -1,9 +1,9 @@
 import { RESET_BUTTON_CONTAINER } from "../constants/dom.js";
 import resetHandler from "../handlers/resetHandler.js";
-import { verifyIfShoppingListItems } from "../utils/verifyIfShoppingListItemsExist.js";
+import { verifyIfToDoListItems } from "../utils/verifyifToDoListItemsExist.js";
 
 export function createResetButton() {
-  if (verifyIfShoppingListItems() == true) {
+  if (verifyIfToDoListItems() == true) {
     if (Array.from(RESET_BUTTON_CONTAINER.children).length == 0) {
       console.log("✅ CREATED");
       const resetButton = document.createElement("button");
@@ -14,6 +14,11 @@ export function createResetButton() {
     }
   } else {
     console.log("❌ REMOVED");
-    RESET_BUTTON_CONTAINER.removeChild(RESET_BUTTON_CONTAINER.lastChild);
+      if(RESET_BUTTON_CONTAINER.lastChild !== null){
+        RESET_BUTTON_CONTAINER.removeChild(RESET_BUTTON_CONTAINER.lastChild);
+      }
+    
+    
+ 
   }
 }

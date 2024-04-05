@@ -4,24 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Boris Rose" />
-    <meta name="description" content="Login Page de la To Do List" />
-    <title>Login | Page</title>
+    <meta name="description" content="register Page du ToDo List" />
+    <title>Register | Page</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
     <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/register.css" />
   </head>
   <body>
-    <header class="header login-header">
-      <p>Login Page</p>
+    <header class="header register-header">
+      <p>Register Page</p>
     </header>
-    <main class="main login-main">
+    <main class="main register-main">
       <video autoplay loop muted class="video">
         <source src="../public/landing-bg.mp4" type="video/mp4" />
       </video>
-      <form id="login-form">
+      <form id="register-form">
         <article>
           <label for="email"></label>
           <input id="email" type="email" placeholder="Entrez votre email" />
@@ -31,9 +31,17 @@
           <input
             id="password"
             type="password"
-            placeholder="Entrez votre mot de passe"
+            placeholder="Entrez un mot de passe"
           />
         </article>
+        <article>
+            <label for="password"></label>
+            <input
+              id="confirmed-password"
+              type="password"
+              placeholder="Confirmez le mot de passe"
+            />
+          </article>
         <section>
           <button type="submit">Valider</button>
           <button type="reset">Réinitialiser</button>
@@ -43,8 +51,8 @@
           <p id="success"></p>
         </section>
       </form>
-      <p> Pas encore inscrit(e) ? <a href="./register.html"> Inscrivez-vous</a></p>
+      <p> Déjà inscrit(e) ? <a href="./register.html"> Connectez-vous</a></p>
     </main>
-    <script src="../js/pages/login.js" type="module"> </script>
+    <script src="../js/pages/register.js" type="module"> </script>
   </body>
 </html>

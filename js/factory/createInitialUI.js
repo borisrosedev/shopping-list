@@ -1,7 +1,7 @@
 import { ToDoService } from "../services/ToDoService.js";
 
 import { createResetButton } from "./createResetButton.js";
-import { createShoppingListItemLi } from "./createShoppingListItemLi.js";
+import { createToDoListItemLi } from "./createToDoListItemLi.js";
 
 async function createInitiUI() {
   const url = new URL(window.location.href);
@@ -11,11 +11,14 @@ async function createInitiUI() {
   if (uid) {
     console.log("je suis ici");
     const toDos = await ToDoService.getUserToDosFromFirestore(uid);
-    console.log(toDos);
-    toDos.forEach((toDo) => {
-      createShoppingListItemLi(toDo, "firestore");
-    });
-    createResetButton();
+    if(typeof toDos !== "string"){
+      console.log(toDos);
+      toDos.forEach((toDo) => {
+        createToDoListItemLi(toDo, "firestore");
+      });
+      createResetButton();
+    }
+   
   }
 }
 
