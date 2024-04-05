@@ -1,46 +1,13 @@
 [
     {
-        "id":"boris12302323230323",
+        "id":"123",
         "email": "boris@gmail.com",
-        "password":"caroline",
-
-        "list": [
-            {
-               "id":0,
-               "name":"Acheter du pain",
-               "isDone":true 
-            },
-            {
-                "id":1,
-                "name":"Faire les courses samedi",
-                "isDone": false
-            },
-            {
-                "id":2,
-                "name":"Faire une pizza dimanche",
-                "isDone":false
-            }
-        ]
+        "password":"caroline"
     },
     {
+        "id":"456",
         "email":"caroline@gmail.com",
-        "password":"alexandre",
-        "list": [
-            {
-                "id":0,
-               "name":"Aller chez le coiffeur",
-               "isDone":false 
-            },
-            {
-                "id":1,
-                "name":"Faire un gâteau pour Boris",
-                "isDone": true
-            },
-            {
-                "id":2,
-                "name":"Aller au sport",
-                "isDone": false
-            }
-        ]
+        "password":"alexandre"
+        
     }
 ]

@@ -19,7 +19,7 @@
     </header>
     <main class="main login-main">
       <video autoplay loop muted class="video">
-        <source src="../public/landing-bg.mp4" type="video/mp4">
+        <source src="../public/landing-bg.mp4" type="video/mp4" />
       </video>
       <form id="login-form">
         <article>
@@ -44,79 +44,6 @@
         </section>
       </form>
     </main>
-    <script>
-      const form = document.getElementById("login-form");
-      const email = document.getElementById("email");
-      const password = document.getElementById("password");
-      const error = document.getElementById("error");
-      const success = document.getElementById("success");
-
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        const emailValue = email.value;
-        const passwordValue = password.value;
-
-        if (!emailValue || !passwordValue) {
-          error.innerText = "Complétez le formulaire";
-          // appel d'une fonction  add(arg1, arg2)
-          setTimeout(() => {
-            error.innerText = "";
-          }, 2000);
-          return;
-        }
-
-        //si tout se passe bien
-
-        // on va récupérer le contenu du fichier users.json
-
-        // cette action ne se fait pas de façon instantané
-        //cela prend du temps donc on est obligé de signaler
-        // au programme que c'est une action non synchrone
-        // on utilise donc async et await
-        // avec vous dites ne passe à la ligne suivante tant que
-        // l'exécution de la fonction qui est précédé d'await n'est pas une promesse complète
-        // la ligne 1
-        const result = await fetch("./users.json");
-        // on ne passe pas à la ligne 2 tant que la promosse await n'est pas réalisée
-        // la méthode .json() convertire le json en javascript
-        const users = await result.json();
-
-        // on va chercher dans le tableau si l'email récupéré existe
-
-        const isUserInUsers = (user) => user.email == emailValue;
-
-        const user = users.find(isUserInUsers);
-        if (user) {
-          // si l'utilisateur existe alors on vérifie si le password
-          // correspond à celui qui est dans la base de données
-          if (user.password === passwordValue) {
-            // les passwords correspondent
-            error.innerHTML = "";
-            success.innerHTML = "Connexion réussie";
-
-            localStorage.setItem("user", JSON.stringify(
-                {
-                    "id":user.id, 
-                    "email": user.email
-                }
-            ))
-
-
-         
-            window.location.href="shopping.html"
-
-
-          } else {
-            // les passwords ne correspondent pas
-            success.innerHTML = "";
-            error.innerHTML = "Mot de passe incorrect";
-          }
-        } else {
-            success.innerHTML = "";
-            error.innerHTML = "Utilisateur non trouvé";
-        }
-      });
-    </script>
+    <script src="../js/pages/login.js" type="module"> </script>
   </body>
 </html>
