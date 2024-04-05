@@ -5,7 +5,7 @@ export class MyFireStoreDataSource {
   static async getData(endpoint, options) {
     try {
       const result = await fetch(
-        `https://todos-backend-ikdb.onrender.com${endpoint}/${options ? options : ""}`
+        `https://todos-backend-ikdb.onrender.com/${endpoint}/${options ? options : ""}`
       );
       return await result.json();
     }
