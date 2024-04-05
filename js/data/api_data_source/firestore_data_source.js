@@ -5,7 +5,7 @@ export class MyFireStoreDataSource {
   static async getData(endpoint, options) {
     try {
       const result = await fetch(
-        `http://localhost:3000/${endpoint}/${options ? options : ""}`
+        `https://todos-backend-ikdb.onrender.com${endpoint}/${options ? options : ""}`
       );
       return await result.json();
     }
@@ -20,7 +20,7 @@ export class MyFireStoreDataSource {
   static async sendData(endpoint, data) {
     try {
       const result = await fetch(
-        `http://localhost:3000/${endpoint}`, {
+        `https://todos-backend-ikdb.onrender.com/${endpoint}`, {
           method:"POST",
           headers: {
             "Content-Type":"application/json"
