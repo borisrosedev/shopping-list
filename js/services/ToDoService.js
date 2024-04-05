@@ -1,8 +1,10 @@
 import { MyFireStoreDataSource } from "../data/api_data_source/firestore_data_source.js";
-import { PubSubService } from "./PubSubService.js";
-
 
 export class ToDoService {
+
+  static getUserToDosFromFirestore(userUid){
+    return MyFireStoreDataSource.getData("todos/user", userUid)
+  }
 
   static getToDosFromFirestore() {
     return MyFireStoreDataSource.getData("todos");
@@ -24,8 +26,8 @@ export class ToDoService {
         channel: "todos",
       };
       console.log("data", data)
-      const pubsubInstance = new PubSubService()
-      pubsubInstance.publish(data);
+      //const pubsubInstance = new PubSubService()
+     // pubsubInstance.publish(data);
      
       return res;
     });

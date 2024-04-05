@@ -11,7 +11,9 @@ export default async function (event) {
   const emailValue = EMAIL_INPUT.value;
   const passwordValue = PASSWORD_INPUT.value;
 
-  if (!emailValue || !passwordValue) {
+  if (!(emailValue && passwordValue)) {
+    // si la condition ci-dessus est remplie alors tu m'appliques ce qui se trouve
+    // en-dessous
     ERROR_PARAGRAPH.innerText = "Complétez le formulaire";
     // appel d'une fonction  add(arg1, arg2)
     setTimeout(() => {
@@ -20,31 +22,23 @@ export default async function (event) {
     return;
   }
 
-  //si tout se passe bien
 
-  // on va récupérer le contenu du fichier users.json
+  const result = await fetch("http://localhost:3000/user/login", {
+    method: "POST",
+    headers: {
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({email: emailValue, password: passwordValue})
+  })
 
-  // cette action ne se fait pas de façon instantané
-  //cela prend du temps donc on est obligé de signaler
-  // au programme que c'est une action non synchrone
-  // on utilise donc async et await
-  // avec vous dites ne passe à la ligne suivante tant que
-  // l'exécution de la fonction qui est précédé d'await n'est pas une promesse complète
-  // la ligne 1
-  const result = await fetch("./users.json");
-  // on ne passe pas à la ligne 2 tant que la promosse await n'est pas réalisée
-  // la méthode .json() convertire le json en javascript
-  const users = await result.json();
+  const { fullUser } = await result.json()
+  const user = fullUser
 
-  // on va chercher dans le tableau si l'email récupéré existe
-
-  const isUserInUsers = (user) => user.email == emailValue;
-
-  const user = users.find(isUserInUsers);
   if (user) {
+    console.log(user)
     // si l'utilisateur existe alors on vérifie si le password
     // correspond à celui qui est dans la base de données
-    if (user.password === passwordValue) {
+    if (user.uid) {
       // les passwords correspondent
       ERROR_PARAGRAPH.innerHTML = "";
       SUCCESS_PARAGRAPH.innerHTML = "Connexion réussie";
@@ -52,12 +46,15 @@ export default async function (event) {
       localStorage.setItem(
         "user",
         JSON.stringify({
-          id: user.id,
+          id: (user.uid).toString(),
           email: user.email,
         })
       );
 
-      window.location.href = "shopping.html";
+
+      window.location.href = "shopping.html?token="+(user.uid).toString();
+      console.log(window.location)
+  
     } else {
       // les passwords ne correspondent pas
       SUCCESS_PARAGRAPH.innerHTML = "";

@@ -1,8 +1,8 @@
-import {io} from "../../node_modules/socket.io-client/dist/socket.io.esm.min.js";
+//import {io} from "../../node_modules/socket.io-client/dist/socket.io.esm.min.js";
 
 export class PubSubService {
   constructor() {
-    this.socket = io("http://localhost:3000");
+    //this.socket = io("http://localhost:3000");
   }
   subscribe(channel) {
     this.socket.emit("subscribe", { channel: channel});
