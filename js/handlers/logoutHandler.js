@@ -1,6 +1,6 @@
 import { UserService } from "../services/UserService"
 
-async function logoutHandler(){
+export async function logoutHandler(){
     if(localStorage.getItem("user")){
         localStorage.removeItem("user")
         const result = await UserService.logout()
@@ -12,5 +12,5 @@ async function logoutHandler(){
 
 }
 
-export default logoutHandler
+
 
