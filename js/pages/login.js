@@ -1,5 +1,6 @@
 import { FORM } from "../constants/dom.js";
-import submitHandler from "../handlers/submitHandler.js";
+import loginSubmitHandler from "../handlers/loginSubmitHandler.js";
 
 
-FORM.addEventListener("submit", submitHandler);
+
+FORM.addEventListener("submit", loginSubmitHandler);
