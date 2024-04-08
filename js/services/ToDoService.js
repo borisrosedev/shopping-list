@@ -2,6 +2,11 @@ import { MyFireStoreDataSource } from "../data/api_data_source/firestore_data_so
 
 export class ToDoService {
 
+
+  static deleteToDoFromFirestore(id, data){
+    return MyFireStoreDataSource.sendData("todos/user/"+id, data,"DELETE")
+  }
+
   static getUserToDosFromFirestore(userUid){
     return MyFireStoreDataSource.getData("todos/user", userUid)
   }

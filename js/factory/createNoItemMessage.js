@@ -1,6 +1,7 @@
 import { NO_ITEM, TODOS_LIST } from "../constants/dom.js";
 
 function createNoItemMessage() {
+  console.log("into ic");
   // Explications
   // Nous allons stocker dans la variable children, locale à la fonction createNoItemMessage,
   // le résult de la structure ternaire suivante
@@ -17,6 +18,7 @@ function createNoItemMessage() {
   */
 
   if ((Array.from(TODOS_LIST.children).length == 0) == true) {
+    console.log("dedans");
     NO_ITEM.innerText = "Aucun élément pour le moment";
   } else {
     NO_ITEM.innerText = "";

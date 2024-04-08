@@ -1,4 +1,5 @@
 import { ToDoService } from "../services/ToDoService.js";
+import { createNoItemMessage } from "./createNoItemMessage.js";
 
 import { createResetButton } from "./createResetButton.js";
 import { createToDoListItemLi } from "./createToDoListItemLi.js";
@@ -9,14 +10,15 @@ async function createInitiUI() {
   const uid = searchParams.get("token");
 
   if (uid) {
-    console.log("je suis ici");
     const toDos = await ToDoService.getUserToDosFromFirestore(uid);
-    if(typeof toDos !== "string"){
+    if(typeof toDos !== "string" && toDos.length !== 0){
       console.log(toDos);
       toDos.forEach((toDo) => {
         createToDoListItemLi(toDo, "firestore");
       });
       createResetButton();
+    } else {
+      createNoItemMessage()
     }
    
   }

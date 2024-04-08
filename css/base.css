@@ -1,5 +1,5 @@
 :root {
-    --primary-color: rgb(102, 31, 0);
+    --primary-color: rgb(255, 156, 43);
     --desktop-main-height:500px;
     --desktop-main-width:700px;
 }
@@ -18,7 +18,7 @@ body {
 }
 
 html {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 a {

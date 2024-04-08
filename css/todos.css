@@ -1,5 +1,7 @@
 .todos-main {
-  background-image: url("../public/bg1.jpg");
+  background-image: url("../public/credit.jpg");
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: color;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -62,10 +64,12 @@
 
 .li-item-container {
   display: flex;
-
+  align-items: center;
   padding:10px 20px;
 
-  
+  span {
+    margin-inline: 10px;
+  }
 
   p {
     margin: 0;
@@ -119,5 +123,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#no-item {
+  font-size: 20px;
+  align-self: center;
+  padding: 5px;
+  color: white;
 }
 
