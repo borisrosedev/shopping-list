@@ -21,21 +21,7 @@ export class ToDoService {
     });
   }
 
-  static async createToDoInFirestore(val, userUid) {
-    const req = {
-      name: val,
-      userUid:userUid
-    };
-    return MyFireStoreDataSource.sendData("todos/add", req).then((res) => {
-      let data = {
-        message: "Ajoute d'une tâche : " + req.name,
-        channel: "todos",
-      };
-      console.log("data", data)
-      //const pubsubInstance = new PubSubService()
-     // pubsubInstance.publish(data);
-     
-      return res;
-    });
+  static async createToDoInFirestore(data) {
+    return MyFireStoreDataSource.sendData("todos/add", data)
   }
 }

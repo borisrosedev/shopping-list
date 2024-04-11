@@ -1,4 +1,6 @@
 // ---- TODOS PAGE
+const BUGDET_SECTION = document.getElementById("budget-section")
+const TODOS_MAIN = document.getElementById("todos-main");
 const ADD_BUTTON = document.getElementById("add-button");
 const LOGOUT_BUTTON = document.getElementById("logout-button");
 const TODOS_LIST = document.getElementById("todos-list");
@@ -21,6 +23,8 @@ const CONFIRMED_PASSWORD_INPUT = document.getElementById("confirmed-password")
 
 // je veux pouvoir utiliser ces variables ailleurs
 export { 
+  BUGDET_SECTION,
+  TODOS_MAIN,
   ADD_BUTTON, 
   TODOS_LIST, 
   NEW_ITEM_INPUT_CONTAINER, 

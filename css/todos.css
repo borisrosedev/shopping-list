@@ -7,7 +7,36 @@
   background-repeat: no-repeat;
   overflow-y: scroll;
   flex-direction: column;
+  position: relative;
   
+}
+
+
+#budget-section {
+  background-color: white;
+  align-self: flex-start;
+  padding: 5px;
+}
+
+#amount-input-section {
+
+  border: solid white 2px;
+  margin: 40px;
+  align-self: center;
+  display: flex;
+  
+
+  input {
+    padding: 10px;
+    text-align: center;
+  }
+
+  input::placeholder {
+    text-align: center;
+  }
+
+
+
 }
 
 
@@ -48,11 +77,51 @@
 
 }
 
+
+/* INPUTS CONTAINER*/
 #new-item-input-container {
   display: flex;
+  align-self: center;
   flex-direction: column;
 
+
 }
+
+.inputs-container {
+
+  background-color: beige;
+  padding: 10px;
+  width: 300px;
+  article {
+    margin: 10px 0;
+  }
+  article input {
+    width: 100%;
+
+  }
+}
+.button-container {
+
+  background-color: beige;
+  width: 300px;
+  button {
+    width: 100%;
+  }
+}
+
+.todos-list-item-input-article {
+  display: flex;
+  input {
+    border: black .5px solid;
+    padding: 10px;
+    outline: none;
+  }
+
+}
+
+
+
+/*-------------------------------------------------------------*/
 
 #save-button {
   padding: 10px;
@@ -62,18 +131,27 @@
   cursor: pointer;
 }
 
-.li-item-container {
+.list-item-container {
   display: flex;
   align-items: center;
-  padding:10px 20px;
-
-  span {
-    margin-inline: 10px;
-  }
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  
 
   p {
     margin: 0;
     text-align: center;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+
+  
+    span {
+      margin-inline: 10px;
+      min-width: 60px;
+    }
   }
 
   button {
@@ -99,19 +177,6 @@
   }
 }
 
-.todos-list-item-input-article {
-  margin: 20px 0;
-  display: flex;
-  input {
-    padding: 10px;
-    margin-block: 10px;
-    outline: none;
-    border: none;
-    background-color: var(--primary-color);
-    color: white;
-  }
-
-}
 
 
 #notification {

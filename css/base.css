@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+
+span[class*=material]{
+  cursor: pointer;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -67,8 +72,11 @@ ul {
 }
 
 .header {
-  width: 700px;
   height: 8vh;
+  position: fixed;
+  top: 0;
+  left:0;
+  right:0;
   box-shadow: 1px 1px 5px gray;
   display: flex;
   justify-content: space-between;
@@ -94,8 +102,8 @@ ul {
     
   padding-top: 8vh;
   padding-inline: 20px;
-  height:var(--desktop-main-height);
-  width: var(--desktop-main-width);
+  height:100vh;
+  width: 100vw;
   display: flex;
   box-shadow: 1px 1px 5px gray;
   position: relative;
@@ -105,6 +113,44 @@ ul {
    
 }
   
+
+
+#notification-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position:fixed;
+  bottom: 10px;
+  width: 300px;
+  align-self: center;
+  display: none;
+
+  .notification-p {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    color: white;
+    opacity: 0;
+    animation: moveUp 500ms ease-in-out forwards;
+  }
+}
+
+@keyframes moveUp {
+    from {
+      opacity: 0;
+      transform: translateY(300px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+
+
+
+
+
 
 @keyframes show {
   from {
