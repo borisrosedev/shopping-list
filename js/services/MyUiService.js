@@ -41,7 +41,7 @@ export class MyUiService {
     console.log("❎ ");
     const notificationService = new NotificationService();
     const user = await MyLocalStorageService.getData("user");
-    console.clear();
+    //console.clear();
     console.log("user", user);
     if (user.id) {
       console.log("into it");

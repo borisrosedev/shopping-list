@@ -1,14 +1,12 @@
 import { MyFireStoreDataSource } from "../data/api_data_source/firestore_data_source.js";
 
 export class ToDoService {
-
-
-  static deleteToDoFromFirestore(id, data){
-    return MyFireStoreDataSource.sendData("todos/user/"+id, data,"DELETE")
+  static deleteToDoFromFirestore(id, data) {
+    return MyFireStoreDataSource.sendData("todos/user/" + id, data, "DELETE");
   }
 
-  static getUserToDosFromFirestore(userUid){
-    return MyFireStoreDataSource.getData("todos/user", userUid)
+  static getUserToDosFromFirestore(userUid) {
+    return MyFireStoreDataSource.getData("todos/user", userUid);
   }
 
   static getToDosFromFirestore() {
@@ -22,6 +20,11 @@ export class ToDoService {
   }
 
   static async createToDoInFirestore(data) {
-    return MyFireStoreDataSource.sendData("todos/add", data)
+    return MyFireStoreDataSource.sendData("todos/add", data);
+  }
+
+  static async updateOneToDoById(id, data) {
+    console.log("✅ id, data", id, data);
+    return MyFireStoreDataSource.sendData("todos/update/" + id, data, "PUT");
   }
 }

@@ -15,7 +15,7 @@ function takeTheInputValue() {
 
 
     //---------------------CHECKING VALUES
-    if (!(inputNameValue && quantityValue && unitPriceValue)) {
+    if (!inputNameValue) {
       NEW_ITEM_INPUT_CONTAINER.innerHTML = ""
       const notificationService = new NotificationService()
       notificationService.setContent("Vous n'avez pas rempli le formulaire")
@@ -23,14 +23,29 @@ function takeTheInputValue() {
     }
     //-----------------------------------------------------
 
-    
-    createToDoListItemLi({
-      name:inputNameValue,
-      quantity: quantityValue,
-      unitPrice: unitPriceValue,
-      price: quantityValue * unitPriceValue
+    if(inputNameValue && !quantityValue && !unitPriceValue){
+      createToDoListItemLi({
+        name:inputNameValue,
+        quantity: 0,
+        unitPrice: 0,
+        price: quantityValue * unitPriceValue
+  
+      });
 
-    });
+    }
+
+    if(inputNameValue && quantityValue && unitPriceValue){
+      createToDoListItemLi({
+        name:inputNameValue,
+        quantity: quantityValue,
+        unitPrice: unitPriceValue,
+        price: quantityValue * unitPriceValue
+  
+      });
+
+    }
+    
+   
 }
 
 export {

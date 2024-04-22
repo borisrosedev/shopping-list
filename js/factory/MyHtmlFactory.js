@@ -50,6 +50,7 @@ export class MyHtmlFactory {
   }
 
   static createButton(data) {
+    console.log("🔴 create button => data ", data)
     return new MyHtmlButton(
       "button",
       data.parentId,

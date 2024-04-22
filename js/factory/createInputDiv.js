@@ -47,8 +47,12 @@ function createInputDiv() {
     id: "save-button",
     className: "button",
     parentId: "",
+    specifics: [{
+      name: "innerText",
+      value: "Sauvegarder"
+    }]
   });
-  saveButton.element.textContent = "Sauvegarder";
+
 
   NEW_ITEM_INPUT_CONTAINER.addEventListener("submit", saveHandler);
   // on ajoute à l'article l'todoNameItem puis le bouton

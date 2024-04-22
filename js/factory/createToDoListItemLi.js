@@ -8,6 +8,7 @@ import { createResetButton } from "./createResetButton.js";
 import { MyHtmlFactory } from "./MyHtmlFactory.js";
 import { MyLocalStorageService } from "../services/MyLocalStorageService.js";
 import { MyUiService } from "../services/MyUiService.js"
+import { editHandler } from "../handlers/editHandler.js";
 
 // el et from sont des paramètres
 // ils font partie de la signature de la fonction
@@ -59,6 +60,16 @@ async function createToDoListItemLi(data, from) {
     ],
   });
 
+  const editSpanForListItem = MyHtmlFactory.createSpan({
+    className:"material-symbols-outlined",
+    specifics: [{
+      name:"innerText",
+      value: "edit"
+    }]
+  })
+
+  let anyOptionData; 
+
   // control flow
   if (from !== "firestore") {
   
@@ -108,7 +119,9 @@ async function createToDoListItemLi(data, from) {
       ],
     });
 
+    anyOptionData = data;
   } else {
+    // si les data proviennent de la base de données
     brandNewListItem = MyHtmlFactory.createLi({
       id: data.id,
       className: "list-item-container",
@@ -123,6 +136,8 @@ async function createToDoListItemLi(data, from) {
         },
       ],
     });
+
+    anyOptionData = data;
   }
 
   deleteSpanForListItem.element.onclick = async () =>
@@ -133,7 +148,18 @@ async function createToDoListItemLi(data, from) {
       paragraphInBrandNewListItem.element
     );
 
+  editSpanForListItem.element.onclick = async () => {
+    editHandler({
+      instance : brandNewListItem, 
+      id: brandNewListItem.element.id,
+      data: anyOptionData
+    }
+    );
+  }
+
+
   brandNewListItem.element.appendChild(paragraphInBrandNewListItem.element);
+  brandNewListItem.element.appendChild(editSpanForListItem.element);
   brandNewListItem.element.appendChild(emptyCheckboxSpanForListItem.element);
   brandNewListItem.element.appendChild(deleteSpanForListItem.element);
   TODOS_LIST.appendChild(brandNewListItem.element);
